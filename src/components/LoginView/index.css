@@ -60,17 +60,22 @@
 .loginView-inputItem {
   width: 100%;
   padding: 16px;
-  font-size: 16px;
-  font-family: inter;
+  border-radius: 8px;
   border: 1px solid #c3cad9;
-  border-radius: 10px;
+  background: #ffffff;
+  color: #183b56;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .loginView-loginButton {
   color: #ffffff;
   background-color: #0284c7;
   border: 0;
-  border-radius: 10px;
+  border-radius: 8px;
   outline: none;
   cursor: pointer;
   margin-top: 18px;
@@ -79,6 +84,27 @@
   font-size: 16px;
   font-weight: 700;
   line-height: normal;
+}
+
+.loginView-formLabel {
+  color: #5a7184;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.loginView-errorMessage {
+  width: 312px;
+  color: #ef4444;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 768px) {
@@ -125,12 +151,16 @@
 
   .loginView-formItemContainer {
     width: 100%;
-    max-width: 312px;
+    max-width: 360px;
     height: 90px;
     margin-top: 24px;
   }
 
   .loginView-loginButton {
     margin-top: 8px;
+  }
+
+  .loginView-errorMessage {
+    width: 360px;
   }
 }

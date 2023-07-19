@@ -33,7 +33,12 @@ class LoginView extends Component {
             />
             <form className="loginView-form">
               <div className="loginView-formItemContainer">
-                <label htmlFor="loginView-username">Username*</label>
+                <label
+                  htmlFor="loginView-username"
+                  className="loginView-formLabel"
+                >
+                  Username*
+                </label>
                 <input
                   className="loginView-inputItem"
                   type="text"
@@ -44,7 +49,12 @@ class LoginView extends Component {
                 />
               </div>
               <div className="loginView-formItemContainer">
-                <label htmlFor="loginView-password">Password*</label>
+                <label
+                  htmlFor="loginView-password"
+                  className="loginView-formLabel"
+                >
+                  Password*
+                </label>
                 <input
                   className="loginView-inputItem"
                   type="password"
@@ -54,6 +64,7 @@ class LoginView extends Component {
                   onChange={this.onChangePassword}
                 />
               </div>
+              <p className="loginView-errorMessage">error message here</p>
               <div className="loginView-formItemContainer">
                 <button className="loginView-loginButton" type="submit">
                   Login
