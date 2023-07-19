@@ -25,6 +25,7 @@
 
 .loginView-loginContainer {
   width: 100%;
+  background: #f8fafc;
 }
 
 .loginView-loginFormContainer {
@@ -32,6 +33,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #ffffff;
 }
 
 .loginView-logo {
@@ -72,13 +74,14 @@
 }
 
 .loginView-loginButton {
+  width: 312px;
   color: #ffffff;
   background-color: #0284c7;
   border: 0;
   border-radius: 8px;
   outline: none;
   cursor: pointer;
-  margin-top: 18px;
+  margin-top: 24px;
   height: 56px;
   font-family: 'open sans';
   font-size: 16px;
@@ -157,7 +160,9 @@
   }
 
   .loginView-loginButton {
-    margin-top: 8px;
+    width: 360px;
+    margin-top: 32px;
+    margin-bottom: 49px;
   }
 
   .loginView-errorMessage {

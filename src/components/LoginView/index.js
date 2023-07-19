@@ -65,11 +65,9 @@ class LoginView extends Component {
                 />
               </div>
               <p className="loginView-errorMessage">error message here</p>
-              <div className="loginView-formItemContainer">
-                <button className="loginView-loginButton" type="submit">
-                  Login
-                </button>
-              </div>
+              <button className="loginView-loginButton" type="submit">
+                Login
+              </button>
             </form>
           </div>
         </div>
