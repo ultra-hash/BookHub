@@ -1,4 +1,8 @@
+import {Switch, Route, Redirect} from 'react-router-dom'
+
 import LoginView from './components/LoginView'
+import HomeView from './components/HomeView'
+import NotFoundView from './components/NotFoundView'
 import './App.css'
 
 // use the below bookshelvesList for rendering read status of book items in Bookshelves Route
@@ -26,6 +30,13 @@ const bookshelvesList = [
   },
 ]
 
-const App = () => <LoginView />
+const App = () => (
+  <Switch>
+    <Route exact path="/" component={HomeView} />
+    <Route exact path="/login" component={LoginView} />
+    <Route exact path="not-found" component={NotFoundView} />
+    <Redirect to="not-found" />
+  </Switch>
+)
 
 export default App
