@@ -1,0 +1,136 @@
+/* * {
+  border: 1px solid red;
+} */
+
+.loginView-outerContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+.loginView-imageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginView-image {
+  width: 216px;
+  height: 216px;
+  border-radius: 50%;
+  margin: 32px auto 16px;
+}
+
+.loginView-loginContainer {
+  width: 100%;
+}
+
+.loginView-loginFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginView-logo {
+  width: 104px;
+  height: 28px;
+  margin: 16px auto 32px;
+}
+
+.loginView-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 312px;
+}
+
+.loginView-formItemContainer {
+  width: 100%;
+  max-width: 360px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.loginView-inputItem {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-family: inter;
+  border: 1px solid #c3cad9;
+  border-radius: 10px;
+}
+
+.loginView-loginButton {
+  color: #ffffff;
+  background-color: #0284c7;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  margin-top: 18px;
+  height: 56px;
+  font-family: 'open sans';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@media (min-width: 768px) {
+  .loginView-outerContainer {
+    flex-direction: row;
+  }
+
+  .loginView-imageContainer {
+    width: 50%;
+    height: 100%;
+    display: block;
+  }
+
+  .loginView-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .loginView-loginContainer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loginView-loginFormContainer {
+    margin: auto;
+    width: 499px;
+  }
+
+  .loginView-logo {
+    width: 141px;
+    height: 48px;
+    margin: 48px;
+  }
+
+  .loginView-form {
+    width: 360px;
+  }
+
+  .loginView-formItemContainer {
+    width: 100%;
+    max-width: 312px;
+    height: 90px;
+    margin-top: 24px;
+  }
+
+  .loginView-loginButton {
+    margin-top: 8px;
+  }
+}
