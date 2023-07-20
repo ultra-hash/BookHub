@@ -35,7 +35,7 @@ const App = () => (
   <Switch>
     <ProtectedRoute exact path="/" component={HomeView} />
     <Route exact path="/login" component={LoginView} />
-    <Route exact path="not-found" component={NotFoundView} />
+    <Route exact path="/not-found" component={NotFoundView} />
     <Redirect to="not-found" />
   </Switch>
 )
