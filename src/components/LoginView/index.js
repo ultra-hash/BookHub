@@ -1,9 +1,46 @@
 import {Component} from 'react'
+import Cookies from 'js-cookie'
 
 import './index.css'
 
 class LoginView extends Component {
-  state = {username: '', password: ''}
+  state = {username: '', password: '', errorMsg: '', showErrorMsg: false}
+
+  onSubmitLoginForm = async event => {
+    event.preventDefault()
+    this.setState({showErrorMsg: false})
+
+    const {username, password} = this.state
+
+    const url = 'https://apis.ccbp.in/login'
+    const userDetails = {
+      username,
+      password,
+    }
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(userDetails),
+    }
+
+    const response = await fetch(url, options)
+    const data = await response.json()
+
+    if (response.ok === true) {
+      this.onSuccess(data.jwt_token)
+    } else {
+      this.onFailure(data.error_msg)
+    }
+  }
+
+  onSuccess = jwtToken => {
+    Cookies.set('jwt_token', jwtToken, {expires: 1})
+    const {history} = this.props
+    history.replace('/')
+  }
+
+  onFailure = errorMsg => {
+    this.setState({errorMsg, showErrorMsg: true})
+  }
 
   onChangeUsername = event => {
     this.setState({username: event.target.value})
@@ -14,7 +51,12 @@ class LoginView extends Component {
   }
 
   render() {
-    const {username, password} = this.state
+    const {username, password, errorMsg, showErrorMsg} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      const {history} = this.props
+      history.replace('/')
+    }
     return (
       <div className="loginView-outerContainer">
         <div className="loginView-imageContainer">
@@ -31,7 +73,7 @@ class LoginView extends Component {
               src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/logo"
               alt="website logo"
             />
-            <form className="loginView-form">
+            <form className="loginView-form" onSubmit={this.onSubmitLoginForm}>
               <div className="loginView-formItemContainer">
                 <label
                   htmlFor="loginView-username"
@@ -42,7 +84,7 @@ class LoginView extends Component {
                 <input
                   className="loginView-inputItem"
                   type="text"
-                  placeholder="USERNAME"
+                  placeholder="Username"
                   id="loginView-username"
                   value={username}
                   onChange={this.onChangeUsername}
@@ -58,13 +100,17 @@ class LoginView extends Component {
                 <input
                   className="loginView-inputItem"
                   type="password"
-                  placeholder="PASSWORD"
+                  placeholder="Password"
                   id="loginView-password"
                   value={password}
                   onChange={this.onChangePassword}
                 />
               </div>
-              <p className="loginView-errorMessage">error message here</p>
+
+              {showErrorMsg && (
+                <p className="loginView-errorMessage">{errorMsg}</p>
+              )}
+
               <button className="loginView-loginButton" type="submit">
                 Login
               </button>
