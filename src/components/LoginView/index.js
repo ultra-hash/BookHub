@@ -63,7 +63,7 @@ class LoginView extends Component {
           <img
             className="loginView-image"
             src="https://res.cloudinary.com/dxcascpje/image/upload/v1689770930/BookHub/login-page-image.png"
-            alt="login"
+            alt="website login"
           />
         </div>
         <div className="loginView-loginContainer">
@@ -71,7 +71,7 @@ class LoginView extends Component {
             <img
               className="loginView-logo"
               src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/logo"
-              alt="website logo"
+              alt="login website logo"
             />
             <form className="loginView-form" onSubmit={this.onSubmitLoginForm}>
               <div className="loginView-formItemContainer">
