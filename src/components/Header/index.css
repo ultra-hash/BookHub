@@ -1,0 +1,16 @@
+.Header-mobile-section {
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header-websiteLogo {
+  width: 92px;
+}
+
+.Header-UnorderedList {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}

@@ -13,6 +13,7 @@
 }
 
 .Footer-icon {
+  width: 16px;
   height: 16px;
 }
 
@@ -32,6 +33,7 @@
   }
 
   .Footer-icon {
+    width: 21px;
     height: 21px;
   }
 

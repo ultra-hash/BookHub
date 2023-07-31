@@ -1,0 +1,240 @@
+.Home-OuterContainer {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fa;
+}
+
+.loader-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Home-BodyContainer {
+  flex-grow: 1;
+}
+
+.Home-FavoriteSection {
+  padding: 24px 24px 0 24px;
+  box-sizing: border-box;
+}
+
+.Home-MainHeading {
+  padding: 0;
+  margin: 0;
+  color: #1e293b;
+  font-family: 'Inter';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.Home-MainSummary {
+  padding: 0;
+  margin: 8px 0;
+  color: #475569;
+  font-family: 'Inter';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.Home-FindBookBtn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  background: #0284c7;
+  color: #f8fafc;
+  font-family: 'Inter';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  border: 0;
+  outline: none;
+  margin: 16px 0;
+}
+
+.Home-TopRatedBookSection {
+  padding: 16px 28px;
+  background: #fff;
+  box-shadow: 0px 0.4433962404727936px 0.8867924809455872px 0px
+      rgba(96, 97, 112, 0.16),
+    0px 0px 0.4433962404727936px 0px rgba(40, 41, 61, 0.08);
+}
+
+.Home-TopRatedBookHeading {
+  color: #1e293b;
+  font-family: 'Inter';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+.Home-TopRatedBookSlide-image {
+  /* width: 146px;
+  height: 99px; */
+  width: 94%;
+  aspect-ratio: 16/10;
+  flex-shrink: 0;
+  border-radius: 2px;
+  margin: auto;
+}
+
+.Home-TopRatedBookTitle {
+  color: #334155;
+  text-align: center;
+  font-family: 'Inter';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  margin: 0;
+  margin-top: 8px;
+}
+
+.Home-TopRatedBookAuthor {
+  color: #475569;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+  margin: 0;
+}
+
+.Home-FailureView {
+  text-align: center;
+}
+
+.Home-FailureViewImage {
+  height: 120px;
+  flex-shrink: 0;
+  margin-top: 16px;
+}
+
+.Home-FailureViewText {
+  color: #475569;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  padding: 0;
+  margin: 24px 0 12px 0;
+}
+
+.Home-FailureViewButton {
+  outline: none;
+  border: 0;
+  padding: 8px 16px;
+  gap: 8px;
+  border-radius: 8px;
+  background: #0284c7;
+  margin-bottom: 26px;
+
+  color: #ffffff;
+
+  /* Action / Button / Small */
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.Home-show-xs {
+  display: block;
+}
+
+.Home-show-lg {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .Home-FavoriteSection {
+    padding: 48px 100px 0 100px;
+  }
+
+  .Home-MainHeading {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 64px;
+  }
+
+  .Home-MainSummary {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .Home-TopRatedBookSection {
+    border-radius: 16px;
+    background: #fff;
+    margin: 32px 100px 0 100px;
+    padding: 36px 71px 32px 71px;
+
+    /* Light / Shadow / base */
+    box-shadow: 0px 1px 2px 0px rgba(96, 97, 112, 0.16),
+      0px 0px 1px 0px rgba(40, 41, 61, 0.08);
+  }
+
+  .Home-TopRatedBookSection-Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Home-TopRatedBookHeading {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+
+  .Home-TopRatedBookTitle {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+
+  .Home-TopRatedBookAuthor {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  .Home-FailureViewImage {
+    height: 170px;
+    flex-shrink: 0;
+    margin-top: 42px;
+  }
+
+  .Home-FailureViewText {
+    color: #475569;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 24px 0 16px 0;
+  }
+
+  .Home-FailureViewButton {
+    margin-bottom: 48px;
+  }
+
+  .Home-show-xs {
+    display: none;
+  }
+
+  .Home-show-lg {
+    display: block;
+  }
+}

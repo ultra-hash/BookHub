@@ -1,28 +1,14 @@
+import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
+
 import './index.css'
 
 const Footer = () => (
   <div className="Footer-Container">
     <div className="Footer-SocialIconsContainer">
-      <img
-        className="Footer-icon"
-        src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/google-logo-icon"
-        alt="Google icon"
-      />
-      <img
-        className="Footer-icon"
-        src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/twitter-logo-icon"
-        alt="Twitter icon"
-      />
-      <img
-        className="Footer-icon"
-        src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/Instagram-logo-icon"
-        alt="Instagram icon"
-      />
-      <img
-        className="Footer-icon"
-        src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/youtube-logo-icon"
-        alt="Youtube icon"
-      />
+      <FaGoogle className="Footer-icon" />
+      <FaTwitter className="Footer-icon" />
+      <FaInstagram className="Footer-icon" />
+      <FaYoutube className="Footer-icon" />
     </div>
     <p className="Footer-Description">Contact Us</p>
   </div>
