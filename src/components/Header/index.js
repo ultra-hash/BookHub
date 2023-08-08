@@ -1,7 +1,9 @@
 import {Component} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {RiCloseCircleFill} from 'react-icons/ri'
 import {GiHamburgerMenu} from 'react-icons/gi'
+import Cookies from 'js-cookie'
+
 import './index.css'
 
 class Header extends Component {
@@ -11,6 +13,13 @@ class Header extends Component {
     this.setState(prevState => ({
       showMenu: !prevState.showMenu,
     }))
+  }
+
+  onClickLogout = () => {
+    Cookies.remove('jwt_token')
+    const {history} = this.props
+    console.log()
+    history.replace('/login')
   }
 
   render() {
@@ -37,7 +46,11 @@ class Header extends Component {
                 </Link>
               </li>
               <li>
-                <button type="button" className="Header-Logout-Btn">
+                <button
+                  type="button"
+                  className="Header-Logout-Btn"
+                  onClick={this.onClickLogout}
+                >
                   Logout
                 </button>
               </li>
@@ -59,7 +72,11 @@ class Header extends Component {
                 <Link to="/shelf">BookShelf</Link>
               </li>
               <li>
-                <button type="button" className="Header-Logout-Btn">
+                <button
+                  type="button"
+                  className="Header-Logout-Btn"
+                  onClick={this.onClickLogout}
+                >
                   Logout
                 </button>
               </li>
@@ -74,4 +91,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default withRouter(Header)
