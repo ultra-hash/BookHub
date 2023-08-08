@@ -54,6 +54,21 @@ nav > .Header-section > .Header-UnorderedList {
   display: none;
 }
 
+.Header-Link {
+  text-decoration: none;
+  color: #64748b;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: -0.356px;
+}
+
+.Header-Link-Active {
+  color: #0284c7;
+}
+
 @media (min-width: 768px) {
   .Header-section {
     height: 89px;

@@ -22,6 +22,15 @@ class Header extends Component {
     history.replace('/login')
   }
 
+  checkIsActiveLink = link => {
+    const {match} = this.props
+    const {path} = match
+    if (link === path) {
+      return true
+    }
+    return false
+  }
+
   render() {
     const {showMenu} = this.state
 
@@ -36,12 +45,26 @@ class Header extends Component {
             />
             <ul className="Header-UnorderedList Header-show-above-md">
               <li>
-                <Link to="/" className="Header-Link">
+                <Link
+                  to="/"
+                  className={
+                    this.checkIsActiveLink('/')
+                      ? 'Header-Link Header-Link-Active'
+                      : 'Header-Link'
+                  }
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/shelf" className="Header-Link">
+                <Link
+                  to="/shelf"
+                  className={
+                    this.checkIsActiveLink('/shelf')
+                      ? 'Header-Link Header-Link-Active'
+                      : 'Header-Link'
+                  }
+                >
                   BookShelf
                 </Link>
               </li>
@@ -66,10 +89,28 @@ class Header extends Component {
           <div className="Header-section Header-show-below-md">
             <ul className="Header-UnorderedList">
               <li>
-                <Link to="/">Home</Link>
+                <Link
+                  to="/"
+                  className={
+                    this.checkIsActiveLink('/')
+                      ? 'Header-Link Header-Link-Active'
+                      : 'Header-Link'
+                  }
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/shelf">BookShelf</Link>
+                <Link
+                  to="/shelf"
+                  className={
+                    this.checkIsActiveLink('/shelf')
+                      ? 'Header-Link Header-Link-Active'
+                      : 'Header-Link'
+                  }
+                >
+                  BookShelf
+                </Link>
               </li>
               <li>
                 <button
