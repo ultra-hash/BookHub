@@ -2,6 +2,7 @@ import {Component} from 'react'
 import {BsFillStarFill, BsSearch} from 'react-icons/bs'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+import {Link} from 'react-router-dom'
 
 import Header from '../Header'
 import Footer from '../Footer'
@@ -43,6 +44,7 @@ class BookShelvesView extends Component {
   state = {
     shelf: 'ALL',
     search: '',
+    searchValue: '',
     listOfBooks: [],
     isLoading: false,
     apiStatus: apiStatusConstant.initial,
@@ -98,7 +100,11 @@ class BookShelvesView extends Component {
   }
 
   onChangeSearch = event => {
-    this.setState({search: event.target.value})
+    this.setState({searchValue: event.target.value})
+  }
+
+  onClickSearch = () => {
+    this.setState(prevState => ({search: prevState.searchValue}), this.callApi)
   }
 
   onClickChangeShelf = value => {
@@ -110,7 +116,7 @@ class BookShelvesView extends Component {
   }
 
   renderOnFailure = () => (
-    <div className="Home-FailureView">
+    <div className="SHELF-FailureView">
       <img
         className="Home-FailureViewImage"
         src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/something-went-wrong"
@@ -132,21 +138,21 @@ class BookShelvesView extends Component {
   renderOnEmptyList = () => {
     const {search} = this.state
     return (
-      <div className="Home-FailureView">
+      <div className="SHELF-FailureView">
         <img
           className="Home-FailureViewImage"
           src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/search-not-found"
           alt="no books"
         />
         <p className="Home-FailureViewText">
-          Your search for {search} did not find any matches.
+          {`Your search for ${search} did not find any matches.`}
         </p>
       </div>
     )
   }
 
   render() {
-    const {search, shelf, listOfBooks, isLoading, apiStatus} = this.state
+    const {searchValue, shelf, listOfBooks, isLoading, apiStatus} = this.state
     return (
       <div className="Shelf-OuterContainer">
         <Header />
@@ -190,14 +196,14 @@ class BookShelvesView extends Component {
                   <input
                     type="search"
                     placeholder="Search"
-                    value={search}
+                    value={searchValue}
                     onChange={this.onChangeSearch}
                     className="SHELF-search-input"
                   />
                   <button
                     type="button"
                     className="SHELF-search-button"
-                    onClick={this.callApi}
+                    onClick={this.onClickSearch}
                     testid="searchButton"
                   >
                     <BsSearch size={20} />
@@ -230,53 +236,63 @@ class BookShelvesView extends Component {
 
               {apiStatus === apiStatusConstant.success &&
                 listOfBooks.length !== 0 && (
-                  <div className="SHELF-books-container">
-                    <ul className="SHELF-books-list-container">
-                      {listOfBooks.map(book => (
-                        <li>
-                          <div className="SHELF-book-item">
-                            <div>
-                              <img
-                                className="SHELF-book-cover"
-                                src={book.coverPic}
-                                alt={book.title}
-                              />
-                            </div>
-                            <div>
-                              <h1 className="SHELF-book-title">{book.title}</h1>
-                              <p className="SHELF-book-author">
-                                {book.authorName}
-                              </p>
-                              <div className="SHELF-book-rating-container">
-                                <p className="SHELF-book-rating">Avg Rating</p>
-                                <BsFillStarFill
-                                  className="SHELF-book-rating-star"
-                                  size={16}
-                                />
-                                <p className="SHELF-book-rating-value">
-                                  {book.rating}
-                                </p>
+                  <>
+                    <div className="SHELF-books-container">
+                      <ul className="SHELF-books-list-container">
+                        {listOfBooks.map(book => (
+                          <li key={book.id}>
+                            <Link
+                              to={`/books/${book.id}`}
+                              className="SHELF-book-item-link"
+                            >
+                              <div className="SHELF-book-item">
+                                <div>
+                                  <img
+                                    className="SHELF-book-cover"
+                                    src={book.coverPic}
+                                    alt={book.title}
+                                  />
+                                </div>
+                                <div className="SHELF-bookDetails-container">
+                                  <h1 className="SHELF-book-title">
+                                    {book.title}
+                                  </h1>
+                                  <p className="SHELF-book-author">
+                                    {book.authorName}
+                                  </p>
+                                  <div className="SHELF-book-rating-container">
+                                    <p className="SHELF-book-rating">
+                                      Avg Rating
+                                    </p>
+                                    <BsFillStarFill
+                                      className="SHELF-book-rating-star"
+                                      size={16}
+                                    />
+                                    <p className="SHELF-book-rating-value">
+                                      {book.rating}
+                                    </p>
+                                  </div>
+                                  <p className="SHELF-book-status">
+                                    Status:
+                                    <span className="SHELF-book-status-value">
+                                      {book.readStatus}
+                                    </span>
+                                  </p>
+                                </div>
                               </div>
-                              <p className="SHELF-book-status">
-                                Status:
-                                <span className="SHELF-book-status-value">
-                                  {book.readStatus}
-                                </span>
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <Footer />
+                  </>
                 )}
 
               {listOfBooks.length === 0 && this.renderOnEmptyList()}
 
               {apiStatus === apiStatusConstant.failure &&
                 this.renderOnFailure()}
-
-              <Footer />
             </div>
           </div>
         )}

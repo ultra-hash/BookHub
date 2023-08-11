@@ -114,6 +114,10 @@
   width: 100%;
 }
 
+.SHELF-book-item-link {
+  text-decoration: none;
+}
+
 .SHELF-book-item {
   display: flex;
   align-items: center;
@@ -130,6 +134,12 @@
   /* background: url(<path-to-image>), lightgray 50% / cover no-repeat, #fff; */
 }
 
+.SHELF-bookDetails-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .SHELF-book-title {
   color: #334155;
   font-family: Inter;
@@ -137,6 +147,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
+  margin: 0;
 }
 
 .SHELF-book-author {
@@ -146,12 +157,14 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+  margin: 0;
 }
 
 .SHELF-book-rating-container {
   display: flex;
   gap: 4px;
   align-items: center;
+  margin: 0;
 }
 
 .SHELF-book-rating {
@@ -161,10 +174,12 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+  margin: 0;
 }
 
 .SHELF-book-rating-star {
   color: #fbbf24;
+  margin: 0;
 }
 
 .SHELF-book-rating-value {
@@ -173,6 +188,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
+  margin: 0;
 }
 
 .SHELF-book-status {
@@ -182,6 +198,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+  margin: 0;
 }
 
 .SHELF-book-status-value {
@@ -192,6 +209,16 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 133.333% */
+  margin: 0;
+  margin-left: 8px;
+}
+
+.SHELF-FailureView {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .SHELF-show-above-md {
@@ -265,6 +292,10 @@
 
   .SHELF-books-list-container > li {
     width: 50%;
+  }
+
+  .SHELF-bookDetails-container {
+    align-self: flex-start;
   }
 
   .SHELF-show-above-md {
