@@ -115,19 +115,21 @@ class HomeView extends Component {
     return (
       <Slider {...settings}>
         {TopRatedBooksList.map(book => (
-          <li key={book.id}>
-            <Link to={`/books/${book.id}`} className="Home-Find-books-Link">
-              <div className="Home-TopRatedBookSlide">
-                <img
-                  className="Home-TopRatedBookSlide-image"
-                  src={book.coverPic}
-                  alt={book.title}
-                />
-                <h1 className="Home-TopRatedBookTitle">{book.title}</h1>
-                <p className="Home-TopRatedBookAuthor">{book.authorName}</p>
-              </div>
-            </Link>
-          </li>
+          <Link
+            to={`/books/${book.id}`}
+            className="Home-Find-books-Link"
+            key={book.id}
+          >
+            <div className="Home-TopRatedBookSlide">
+              <img
+                className="Home-TopRatedBookSlide-image"
+                src={book.coverPic}
+                alt={book.title}
+              />
+              <h1 className="Home-TopRatedBookTitle">{book.title}</h1>
+              <p className="Home-TopRatedBookAuthor">{book.authorName}</p>
+            </div>
+          </Link>
         ))}
       </Slider>
     )
