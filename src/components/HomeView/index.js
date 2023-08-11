@@ -115,14 +115,18 @@ class HomeView extends Component {
     return (
       <Slider {...settings}>
         {TopRatedBooksList.map(book => (
-          <li className="Home-TopRatedBookSlide" key={book.id}>
-            <img
-              className="Home-TopRatedBookSlide-image"
-              src={book.coverPic}
-              alt={book.title}
-            />
-            <h1 className="Home-TopRatedBookTitle">{book.title}</h1>
-            <p className="Home-TopRatedBookAuthor">{book.authorName}</p>
+          <li key={book.id}>
+            <Link to={`/books/${book.id}`} className="Home-Find-books-Link">
+              <div className="Home-TopRatedBookSlide">
+                <img
+                  className="Home-TopRatedBookSlide-image"
+                  src={book.coverPic}
+                  alt={book.title}
+                />
+                <h1 className="Home-TopRatedBookTitle">{book.title}</h1>
+                <p className="Home-TopRatedBookAuthor">{book.authorName}</p>
+              </div>
+            </Link>
           </li>
         ))}
       </Slider>
@@ -155,6 +159,7 @@ class HomeView extends Component {
       <div className="Home-OuterContainer">
         <Header />
         {isLoading && this.renderLoading()}
+
         {!isLoading && (
           <>
             <div className="Home-BodyContainer">
