@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {Link} from 'react-router-dom'
 
 import Loader from 'react-loader-spinner'
 import Slider from 'react-slick'
@@ -166,19 +167,26 @@ class HomeView extends Component {
                   have enjoyed in the past, and we will give you surprisingly
                   insightful recommendations.
                 </p>
-                <button type="button" className="Home-FindBookBtn Home-show-xs">
-                  Find Books
-                </button>
+                <Link to="/shelf" className="Home-Find-books-Link">
+                  <button
+                    type="button"
+                    className="Home-FindBookBtn Home-show-xs"
+                  >
+                    Find Books
+                  </button>
+                </Link>
               </div>
               <div className="Home-TopRatedBookSection">
                 <div className="Home-TopRatedBookSection-Top">
                   <h1 className="Home-TopRatedBookHeading">Top Rated Books</h1>
-                  <button
-                    type="button"
-                    className="Home-FindBookBtn Home-show-lg"
-                  >
-                    Find Books
-                  </button>
+                  <Link to="/shelf" className="Home-Find-books-Link">
+                    <button
+                      type="button"
+                      className="Home-FindBookBtn Home-show-lg"
+                    >
+                      Find Books
+                    </button>
+                  </Link>
                 </div>
                 {apiStatus === apiStatusConstant.success &&
                   this.renderOnSuccess()}

@@ -162,6 +162,10 @@
   display: none;
 }
 
+.Home-Find-books-Link {
+  text-decoration: none;
+}
+
 @media (min-width: 1024px) {
   .Home-FavoriteSection {
     padding: 48px 100px 0 100px;

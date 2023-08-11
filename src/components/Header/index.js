@@ -36,8 +36,8 @@ class Header extends Component {
 
     return (
       <nav>
-        <div className="Header-section-main">
-          <div className="Header-section">
+        <ul className="Header-section-main">
+          <li className="Header-section">
             <img
               className="Header-websiteLogo"
               src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/logo"
@@ -83,8 +83,8 @@ class Header extends Component {
               className="Header-show-below-md"
               onClick={this.toggleMenu}
             />
-          </div>
-        </div>
+          </li>
+        </ul>
         {showMenu && (
           <div className="Header-section Header-show-below-md">
             <ul className="Header-UnorderedList">
