@@ -156,152 +156,154 @@ class BookShelvesView extends Component {
     return (
       <div className="Shelf-OuterContainer">
         <Header />
-        {!isLoading && (
-          <div className="SHELF-main-body">
-            <div className="SHELF-main-left SHELF-show-above-md">
-              <div className="SHELF-tags-list-container">
-                <h1 className="SHELF-tags-heading">Bookshelves</h1>
-                <ul className="SHELF-tags-list">
-                  {bookshelvesList.map(eachObject => (
-                    <li key={eachObject.id}>
-                      <button
-                        type="button"
-                        className={
-                          shelf === eachObject.value
-                            ? 'SHELF-tag SHELF-tag-active'
-                            : 'SHELF-tag'
-                        }
-                        onClick={() =>
-                          this.onClickChangeShelf(eachObject.value)
-                        }
-                      >
-                        {eachObject.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+
+        <div className="SHELF-main-body">
+          <div className="SHELF-main-left SHELF-show-above-md">
+            <div className="SHELF-tags-list-container">
+              <h1 className="SHELF-tags-heading">Bookshelves</h1>
+              <ul className="SHELF-tags-list">
+                {bookshelvesList.map(eachObject => (
+                  <li key={eachObject.id}>
+                    <button
+                      type="button"
+                      className={
+                        shelf === eachObject.value
+                          ? 'SHELF-tag SHELF-tag-active'
+                          : 'SHELF-tag'
+                      }
+                      onClick={() => this.onClickChangeShelf(eachObject.value)}
+                    >
+                      {eachObject.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="SHELF-main-right">
+            <div className="SHELF-main-heading-search-container">
+              <h1 className="SHELF-shelf-Heading SHELF-show-above-md">
+                {
+                  bookshelvesList.find(eachObject => eachObject.value === shelf)
+                    .label
+                }{' '}
+                Books
+              </h1>
+              <div className="SHELF-search-container">
+                <input
+                  type="search"
+                  placeholder="Search"
+                  value={searchValue}
+                  onChange={this.onChangeSearch}
+                  className="SHELF-search-input"
+                />
+                <button
+                  type="button"
+                  className="SHELF-search-button"
+                  onClick={this.onClickSearch}
+                  testid="searchButton"
+                >
+                  <BsSearch size={20} />
+                </button>
               </div>
             </div>
-            <div className="SHELF-main-right">
-              <div className="SHELF-main-heading-search-container">
-                <h1 className="SHELF-shelf-Heading SHELF-show-above-md">
-                  {
-                    bookshelvesList.find(
-                      eachObject => eachObject.value === shelf,
-                    ).label
-                  }{' '}
-                  Books
-                </h1>
-                <div className="SHELF-search-container">
-                  <input
-                    type="search"
-                    placeholder="Search"
-                    value={searchValue}
-                    onChange={this.onChangeSearch}
-                    className="SHELF-search-input"
-                  />
-                  <button
-                    type="button"
-                    className="SHELF-search-button"
-                    onClick={this.onClickSearch}
-                    testid="searchButton"
-                  >
-                    <BsSearch size={20} />
-                  </button>
-                </div>
-              </div>
 
-              <div className="SHELF-tags-list-container SHELF-show-below-md">
-                <h1 className="SHELF-tags-heading">Bookshelves</h1>
-                <ul className="SHELF-tags-list">
-                  {bookshelvesList.map(eachObject => (
-                    <li key={eachObject.id}>
-                      <button
-                        type="button"
-                        className={
-                          shelf === eachObject.value
-                            ? 'SHELF-tag SHELF-tag-active'
-                            : 'SHELF-tag'
-                        }
-                        onClick={() =>
-                          this.onClickChangeShelf(eachObject.value)
-                        }
-                      >
-                        {eachObject.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="SHELF-tags-list-container SHELF-show-below-md">
+              <h1 className="SHELF-tags-heading">Bookshelves</h1>
+              <ul className="SHELF-tags-list">
+                {bookshelvesList.map(eachObject => (
+                  <li key={eachObject.id}>
+                    <button
+                      type="button"
+                      className={
+                        shelf === eachObject.value
+                          ? 'SHELF-tag SHELF-tag-active'
+                          : 'SHELF-tag'
+                      }
+                      onClick={() => this.onClickChangeShelf(eachObject.value)}
+                    >
+                      {eachObject.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-              {apiStatus === apiStatusConstant.success &&
-                listOfBooks.length !== 0 && (
-                  <>
-                    <div className="SHELF-books-container">
-                      <ul className="SHELF-books-list-container">
-                        {listOfBooks.map(book => (
-                          <li key={book.id}>
-                            <Link
-                              to={`/books/${book.id}`}
-                              className="SHELF-book-item-link"
-                            >
-                              <div className="SHELF-book-item">
-                                <div>
-                                  <img
-                                    className="SHELF-book-cover"
-                                    src={book.coverPic}
-                                    alt={book.title}
-                                  />
-                                </div>
-                                <div className="SHELF-bookDetails-container">
-                                  <h1 className="SHELF-book-title">
-                                    {book.title}
-                                  </h1>
-                                  <p className="SHELF-book-author">
-                                    {book.authorName}
-                                  </p>
-                                  <div className="SHELF-book-rating-container">
-                                    <p className="SHELF-book-rating">
-                                      Avg Rating
-                                    </p>
-                                    <BsFillStarFill
-                                      className="SHELF-book-rating-star"
-                                      size={16}
-                                    />
-                                    <p className="SHELF-book-rating-value">
-                                      {book.rating}
-                                    </p>
-                                  </div>
-                                  <p className="SHELF-book-status">
-                                    Status:
-                                    <span className="SHELF-book-status-value">
-                                      {book.readStatus}
-                                    </span>
-                                  </p>
-                                </div>
+            {apiStatus === apiStatusConstant.success &&
+              listOfBooks.length !== 0 && (
+                <>
+                  <div className="SHELF-books-container">
+                    <ul className="SHELF-books-list-container">
+                      {listOfBooks.map(book => (
+                        <li key={book.id}>
+                          <Link
+                            to={`/books/${book.id}`}
+                            className="SHELF-book-item-link"
+                          >
+                            <div className="SHELF-book-item">
+                              <div>
+                                <img
+                                  className="SHELF-book-cover"
+                                  src={book.coverPic}
+                                  alt={book.title}
+                                />
                               </div>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <Footer />
-                  </>
-                )}
+                              <div className="SHELF-bookDetails-container">
+                                <h1 className="SHELF-book-title">
+                                  {book.title}
+                                </h1>
+                                <p className="SHELF-book-author">
+                                  {book.authorName}
+                                </p>
+                                <div className="SHELF-book-rating-container">
+                                  <p className="SHELF-book-rating">
+                                    Avg Rating
+                                  </p>
+                                  <BsFillStarFill
+                                    className="SHELF-book-rating-star"
+                                    size={16}
+                                  />
+                                  <p className="SHELF-book-rating-value">
+                                    {book.rating}
+                                  </p>
+                                </div>
+                                <p className="SHELF-book-status">
+                                  Status:
+                                  <span className="SHELF-book-status-value">
+                                    {book.readStatus}
+                                  </span>
+                                </p>
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Footer />
+                </>
+              )}
 
-              {listOfBooks.length === 0 && this.renderOnEmptyList()}
+            {listOfBooks.length === 0 &&
+              isLoading === false &&
+              this.renderOnEmptyList()}
 
-              {apiStatus === apiStatusConstant.failure &&
-                this.renderOnFailure()}
-            </div>
+            {apiStatus === apiStatusConstant.failure &&
+              isLoading === false &&
+              this.renderOnFailure()}
+
+            {isLoading && (
+              <div className="loader-container" testid="loader">
+                <Loader
+                  type="TailSpin"
+                  color="#0284C7"
+                  height={50}
+                  width={50}
+                />
+              </div>
+            )}
           </div>
-        )}
-
-        {isLoading && (
-          <div className="loader-container" testid="loader">
-            <Loader type="TailSpin" color="#0284C7" height={50} width={50} />
-          </div>
-        )}
+        </div>
       </div>
     )
   }
