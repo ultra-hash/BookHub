@@ -13,7 +13,7 @@ const App = () => (
     <Route exact path="/books/:id" component={BookDetails} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/not-found" component={NotFound} />
-    <Redirect path="/not-found" />
+    <Redirect to="/not-found" />
   </Switch>
 )
 
