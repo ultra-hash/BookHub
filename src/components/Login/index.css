@@ -110,13 +110,16 @@
 
   .image-container > .image-container {
     width: 50%;
-    flex-grow: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
   }
 
   .login-container > .login-form-container {
     width: 50%;
-    flex-grow: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
     align-items: center;
+    background: #f8fafc;
   }
 
   .login-image {
@@ -125,11 +128,23 @@
     border-radius: 0;
   }
 
+  .login-form {
+    background: #fff;
+    padding: 20px;
+    margin: 20px;
+  }
+
   .md-mt-24px {
     margin-top: 24px;
   }
 
   .md-mb-56px {
     margin-bottom: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-form {
+    padding: 70px;
   }
 }
