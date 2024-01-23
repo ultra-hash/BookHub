@@ -3,7 +3,19 @@ import {Component} from 'react'
 import './index.css'
 
 class Login extends Component {
+  state = {username: '', password: '', showError: false, errorMessage: ''}
+
   render() {
+    const {username, password, showError, errorMessage} = this.state
+
+    const handleOnChangeUsername = event => {
+      this.setState({username: event.target.value})
+    }
+
+    const handleOnChangePassword = event => {
+      this.setState({password: event.target.value})
+    }
+
     return (
       <div className="login-container">
         <div className="image-container">
@@ -29,6 +41,8 @@ class Login extends Component {
                 id="login-form-username"
                 type="username"
                 placeholder="username"
+                value={username}
+                onChange={handleOnChangeUsername}
               />
             </div>
             <div className="login-form-item mt-16px md-mt-24px">
@@ -40,9 +54,13 @@ class Login extends Component {
                 id="login-form-password"
                 type="password"
                 placeholder="password"
+                value={password}
+                onChange={handleOnChangePassword}
               />
             </div>
-            <p className="login-form-error-message">Error Message </p>
+            {showError && (
+              <p className="login-form-error-message">{errorMessage}</p>
+            )}
             <div className="login-form-item mt-24px">
               <button className="login-form-btn" type="submit">
                 Login
