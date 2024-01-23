@@ -1,20 +1,62 @@
 import {Component} from 'react'
+import Cookies from 'js-cookie'
 
 import './index.css'
 
 class Login extends Component {
   state = {username: '', password: '', showError: false, errorMessage: ''}
 
+  componentDidMount() {
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken) {
+      const {history} = this.props
+      history.replace('/')
+    }
+  }
+
+  handleOnLoginSuccess = jwtToken => {
+    Cookies.set('jwt_token', jwtToken, {expires: 1})
+    const {history} = this.props
+    history.replace('/')
+  }
+
+  handleOnLoginFailure = errorMsg => {
+    this.setState({errorMessage: errorMsg, showError: true})
+  }
+
+  handleOnSubmitForm = async event => {
+    event.preventDefault()
+
+    const {username, password} = this.state
+    const userDetails = {
+      username,
+      password,
+    }
+    const url = 'https://apis.ccbp.in/login'
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(userDetails),
+    }
+
+    const response = await fetch(url, options)
+    const data = await response.json()
+
+    if (data.jwt_token) {
+      return this.handleOnLoginSuccess(data.jwt_token)
+    }
+    return this.handleOnLoginFailure(data.error_msg)
+  }
+
+  handleOnChangeUsername = event => {
+    this.setState({username: event.target.value})
+  }
+
+  handleOnChangePassword = event => {
+    this.setState({password: event.target.value})
+  }
+
   render() {
     const {username, password, showError, errorMessage} = this.state
-
-    const handleOnChangeUsername = event => {
-      this.setState({username: event.target.value})
-    }
-
-    const handleOnChangePassword = event => {
-      this.setState({password: event.target.value})
-    }
 
     return (
       <div className="login-container">
@@ -26,7 +68,7 @@ class Login extends Component {
           />
         </div>
         <div className="login-form-container">
-          <form className="login-form">
+          <form className="login-form" onSubmit={this.handleOnSubmitForm}>
             <img
               className="login-website-logo mb-32px md-mb-56px"
               src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/logo"
@@ -42,7 +84,7 @@ class Login extends Component {
                 type="username"
                 placeholder="username"
                 value={username}
-                onChange={handleOnChangeUsername}
+                onChange={this.handleOnChangeUsername}
               />
             </div>
             <div className="login-form-item mt-16px md-mt-24px">
@@ -55,7 +97,7 @@ class Login extends Component {
                 type="password"
                 placeholder="password"
                 value={password}
-                onChange={handleOnChangePassword}
+                onChange={this.handleOnChangePassword}
               />
             </div>
             {showError && (
