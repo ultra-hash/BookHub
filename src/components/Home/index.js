@@ -31,7 +31,7 @@ class Home extends Component {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `${jwtToken}`,
+        Authorization: `Bearer ${jwtToken}`,
       },
     }
 
@@ -129,15 +129,21 @@ class Home extends Component {
         {apiRequestStatus === apiStatusConstant.success && (
           <Slider {...settings}>
             {books.map(book => (
-              <div key={book.id} className="home-slider-card">
-                <img
-                  className="home-slider-image"
-                  src={book.cover_pic}
-                  alt={book.title}
-                />
-                <h1 className="home-slider-card-title">{book.title}</h1>
-                <p className="home-slider-card-author">{book.author_name}</p>
-              </div>
+              <Link
+                to={`/books/${book.id}`}
+                className="home-btn-link"
+                key={book.id}
+              >
+                <div className="home-slider-card">
+                  <img
+                    className="home-slider-image"
+                    src={book.cover_pic}
+                    alt={book.title}
+                  />
+                  <h1 className="home-slider-card-title">{book.title}</h1>
+                  <p className="home-slider-card-author">{book.author_name}</p>
+                </div>
+              </Link>
             ))}
           </Slider>
         )}
