@@ -4,13 +4,14 @@ import Bookshelves from './components/Bookshelves'
 import BookDetails from './components/BookDetails'
 import Login from './components/Login'
 import NotFound from './components/NotFound'
+import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 
 const App = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/shelf" component={Bookshelves} />
-    <Route exact path="/books/:id" component={BookDetails} />
+    <ProtectedRoute exact path="/" component={Home} />
+    <ProtectedRoute exact path="/shelf" component={Bookshelves} />
+    <ProtectedRoute exact path="/books/:id" component={BookDetails} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/not-found" component={NotFound} />
     <Redirect to="/not-found" />
