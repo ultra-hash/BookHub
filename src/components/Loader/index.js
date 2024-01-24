@@ -1,11 +1,16 @@
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
 
 import './index.css'
 
-class Loader extends Component {
+class LoaderComponent extends Component {
   render() {
-    return <h1>Loader</h1>
+    return (
+      <div className="loader-container" testid="loader">
+        <Loader type="TailSpin" color="#0284C7" height={50} width={50} />
+      </div>
+    )
   }
 }
 
-export default Loader
+export default LoaderComponent
