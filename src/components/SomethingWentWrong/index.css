@@ -1,0 +1,53 @@
+.something-went-wrong-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.something-went-wrong-image {
+  width: 70%;
+  max-width: 470px;
+}
+
+.something-went-wrong-message {
+  text-align: center;
+  color: #475569;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.something-went-wrong-button {
+  outline: none;
+  border: 0;
+  display: flex;
+  padding: 8px 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  background: #0284c7;
+
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+@media (min-width: 768px) {
+  .something-went-wrong-message {
+    font-size: 24px;
+    line-height: 48px;
+  }
+
+  .something-went-wrong-button {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
