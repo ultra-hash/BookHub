@@ -82,7 +82,7 @@ nav > div {
 @media (min-width: 768px) {
   .navbar-container {
     padding: 24px;
-    max-width: 768px;
+    max-width: 720px;
   }
 
   .navbar-website-logo {
@@ -109,9 +109,9 @@ nav > div {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
   .navbar-container {
-    max-width: 1024px;
+    max-width: 960px;
   }
 
   .navbar-website-logo {
@@ -119,8 +119,14 @@ nav > div {
   }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .navbar-container {
     max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .navbar-container {
+    max-width: 1320px;
   }
 }
