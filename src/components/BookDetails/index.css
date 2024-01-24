@@ -1,0 +1,140 @@
+.book-details-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f7fa;
+}
+
+.book-details-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.book-details-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  margin: 36px;
+}
+
+.book-details-card-image {
+  width: 235px;
+  height: 274px;
+  /* object-fit: cover; */
+  border-radius: 14px;
+}
+
+.book-details-card-context {
+  text-align: center;
+}
+
+.book-details-title {
+  color: #334155;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.book-details-author-name,
+.book-details-rating,
+.book-details-status-para {
+  color: #475569;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.book-details-rating {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-details-star-icon {
+  align-self: flex-start;
+}
+
+.book-details-status {
+  color: #0284c7;
+}
+
+.book-details-divider {
+  background-color: #94a3b8;
+  height: 0.5px;
+  border: 0;
+  width: 100%;
+}
+
+.book-details-about-heading {
+  color: #334155;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.book-details-about-para {
+  color: #475569;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+@media (min-width: 768px) {
+  .book-details-full-card {
+    width: 80%;
+    padding: 64px;
+    padding-top: 24px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 24px;
+    max-width: 1320px;
+    margin: auto;
+  }
+
+  .book-details-card {
+    flex-direction: row;
+    justify-content: center;
+    gap: 48px;
+  }
+  .book-details-card-context {
+    text-align: left;
+  }
+
+  /* .book-details-title {
+    font-size: 32px;
+    line-height: 48px;
+  }
+
+  .book-details-author-name,
+  .book-details-rating,
+  .book-details-status-para {
+    font-size: 24px;
+    line-height: 32px;
+  } */
+
+  .book-details-rating {
+    justify-content: flex-start;
+  }
+
+  .book-details-about-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .book-details-about-para {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
