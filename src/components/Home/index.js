@@ -5,10 +5,10 @@ import Slider from 'react-slick'
 import NavBar from '../Header'
 import Footer from '../Footer'
 import LoaderComponent from '../Loader'
+import SomethingWentWrong from '../SomethingWentWrong'
 import apiStatusConstant from '../../constants'
 
 import './index.css'
-import SomethingWentWrong from '../SomethingWentWrong'
 
 class Home extends Component {
   state = {
@@ -41,7 +41,7 @@ class Home extends Component {
     if (data.books) {
       return this.onSuccess(data.books)
     }
-    return this.onFailure(data.error_msg)
+    return this.onFailure()
   }
 
   onSuccess = books => {
@@ -52,9 +52,8 @@ class Home extends Component {
     })
   }
 
-  onFailure = errorMessage => {
+  onFailure = () => {
     this.setState({
-      errorMsg: errorMessage,
       apiRequestStatus: apiStatusConstant.failed,
       isLoading: false,
     })
