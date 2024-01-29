@@ -1,4 +1,13 @@
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
+import {BsSearch} from 'react-icons/bs'
+import Cookies from 'js-cookie'
+import Header from '../Header'
+import Footer from '../Footer'
+import LoaderComponent from '../Loader'
+import apiStatusConstant from '../../constants'
+import BookCardItem from '../BookCardItem'
+import SomethingWentWrong from '../SomethingWentWrong'
 
 import './index.css'
 
@@ -27,8 +36,222 @@ const bookshelvesList = [
 ]
 
 class Bookshelves extends Component {
+  state = {
+    isLoading: false,
+    searchText: '',
+    bookshelfName: bookshelvesList[0].value,
+    books: [],
+    apiRequestStatus: apiStatusConstant.initial,
+    searchTextValue: '',
+  }
+
+  componentDidMount() {
+    this.setState(
+      {isLoading: true, apiRequestStatus: apiStatusConstant.pending},
+      this.fetchDetails,
+    )
+  }
+
+  retry = () => {
+    this.setState(
+      {isLoading: true, apiRequestStatus: apiStatusConstant.pending},
+      this.fetchDetails,
+    )
+  }
+
+  fetchDetails = async () => {
+    const {searchTextValue, bookshelfName} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+
+    const url = `https://apis.ccbp.in/book-hub/books?shelf=${bookshelfName}&search=${searchTextValue}`
+
+    const options = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${jwtToken}`,
+      },
+    }
+
+    const response = await fetch(url, options)
+    const data = await response.json()
+
+    if (data.books) {
+      return this.onSuccess(data.books)
+    }
+    return this.onFailure()
+  }
+
+  onSuccess = books => {
+    this.setState({
+      books: [...books],
+      isLoading: false,
+      apiRequestStatus: apiStatusConstant.success,
+    })
+  }
+
+  onFailure = () => {
+    this.setState({
+      isLoading: false,
+      apiRequestStatus: apiStatusConstant.failed,
+    })
+  }
+
+  handleOnChangeSearch = event => {
+    this.setState({searchText: event.target.value})
+  }
+
+  handleOnClickSearchButton = () => {
+    this.setState(
+      prevState => ({
+        isLoading: true,
+        apiRequestStatus: apiStatusConstant.pending,
+        searchTextValue: prevState.searchText,
+      }),
+      this.fetchDetails,
+    )
+  }
+
+  handleOnClickSetCategory = event => {
+    this.setState(
+      {
+        bookshelfName: event.target.value,
+        isLoading: true,
+        apiRequestStatus: apiStatusConstant.pending,
+      },
+      this.fetchDetails,
+    )
+  }
+
+  renderNoBook = () => {
+    const {searchTextValue} = this.state
+    return (
+      <div className="search-not-found-container">
+        <img
+          className="search-not-found-image"
+          src="https://res.cloudinary.com/dxcascpje/image/upload/f_auto,q_auto/v1/BookHub/search-not-found"
+          alt="no books"
+        />
+        <p className="search-not-found-message">
+          {`Your search for ${searchTextValue} did not find any matches.`}
+        </p>
+      </div>
+    )
+  }
+
   render() {
-    return <h1>Bookshelves</h1>
+    const {
+      isLoading,
+      searchText,
+      bookshelfName,
+      books,
+      apiRequestStatus,
+    } = this.state
+
+    return (
+      <div className="Bookshelves-page">
+        <Header />
+
+        <div className="Bookshelves-container">
+          <div className="left-section d-none d-lg-flex">
+            <h1 className="Bookshelves-Heading">Bookshelves</h1>
+
+            <ul className="BookShelf-buttons-container">
+              {bookshelvesList.map(bookshelf => (
+                <li key={bookshelf.id}>
+                  <button
+                    className={`BookShelf-button ${
+                      bookshelfName === bookshelf.value && 'active'
+                    }`}
+                    type="button"
+                    onClick={this.handleOnClickSetCategory}
+                    value={bookshelf.value}
+                  >
+                    {bookshelf.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="right-section">
+            <div className="bookshelf-details-top">
+              <h1 className="d-none d-lg-flex">
+                {
+                  bookshelvesList.find(book => book.value === bookshelfName)
+                    .label
+                }{' '}
+                Books
+              </h1>
+              <div className="Bookshelves-search-container">
+                <input
+                  className="Bookshelves-search-input"
+                  type="search"
+                  placeholder="Search"
+                  value={searchText}
+                  onChange={this.handleOnChangeSearch}
+                />
+                <button
+                  className="Bookshelves-search-button"
+                  type="button"
+                  testId="searchButton"
+                  onClick={this.handleOnClickSearchButton}
+                >
+                  <BsSearch />
+                </button>
+              </div>
+              <h1 className="Bookshelves-Heading d-lg-none">Bookshelves</h1>
+              <ul className="BookShelf-buttons-container d-lg-none">
+                {bookshelvesList.map(bookshelf => (
+                  <li key={bookshelf.id}>
+                    <button
+                      className={`BookShelf-button ${
+                        bookshelfName === bookshelf.value && 'active'
+                      }`}
+                      type="button"
+                      onClick={this.handleOnClickSetCategory}
+                      value={bookshelf.value}
+                    >
+                      {bookshelf.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {isLoading && <LoaderComponent />}
+
+            {!isLoading && (
+              <div className="result-container">
+                {apiRequestStatus === apiStatusConstant.failed && (
+                  <SomethingWentWrong callbackFunction={this.retry} />
+                )}
+
+                {apiRequestStatus === apiStatusConstant.success && (
+                  <>
+                    {books.length !== 0 && (
+                      <ul className="books-list-container">
+                        {books.map(book => (
+                          <li key={book.id}>
+                            <Link
+                              to={`/books/${book.id}`}
+                              className="book-link"
+                            >
+                              <BookCardItem bookDetails={book} />
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {books.length === 0 && this.renderNoBook()}
+                  </>
+                )}
+              </div>
+            )}
+            <Footer />
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 

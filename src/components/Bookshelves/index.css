@@ -1,0 +1,252 @@
+.Bookshelves-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.Bookshelves-container {
+  width: 100%;
+  flex-grow: 1;
+  padding: 24px;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.bookshelf-details-top {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Bookshelves-search-container {
+  max-height: 32px;
+  align-self: flex-start;
+  display: flex;
+  align-items: stretch;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  background-color: #fff;
+  overflow: hidden;
+
+  order: -1;
+}
+
+.Bookshelves-search-input {
+  color: #94a3b8;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  outline: none;
+  border: 0;
+  padding: 6px 16px;
+}
+
+.Bookshelves-search-button {
+  width: 52px;
+  border-radius: 0px 3px 3px 0px;
+  background-color: #edeff1;
+  outline: none;
+  border: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Bookshelves-Heading {
+  color: #334155;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.BookShelf-buttons-container {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.BookShelf-button {
+  display: inline-flex;
+  padding: 4px 8px;
+  align-items: flex-start;
+
+  border-radius: 25px;
+  border: 1px solid #0284c7;
+
+  color: #0284c7;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.BookShelf-button.active {
+  color: #f8fafc;
+  background-color: #0284c7;
+}
+
+.result-container {
+  flex-grow: 1;
+  display: flex;
+}
+
+.books-list-container {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.d-none {
+  display: none;
+}
+
+.search-not-found-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-not-found-image {
+  width: 70%;
+  max-width: 470px;
+}
+
+.search-not-found-message {
+  color: #475569;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.book-link {
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .Bookshelves-container {
+    max-width: 720px;
+  }
+
+  .books-list-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .books-list-container > li {
+    width: 48%;
+  }
+}
+
+@media (min-width: 992px) {
+  .Bookshelves-container {
+    flex-direction: row;
+    gap: 32px;
+    max-width: 960px;
+  }
+
+  .left-section {
+    width: 256px;
+    flex-shrink: 0;
+    background: #fff;
+    padding: 32px;
+  }
+
+  .Bookshelves-Heading {
+    color: #334155;
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .BookShelf-buttons-container > li {
+    width: 100%;
+  }
+
+  .BookShelf-button {
+    color: #475569;
+    font-size: 16px;
+    line-height: 24px;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .BookShelf-button.active {
+    background-color: transparent;
+    color: #0284c7;
+  }
+
+  .bookshelf-details-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .bookshelf-details-top > h1 {
+    margin: 0;
+    padding: 0;
+    color: #334155;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .Bookshelves-search-container {
+    order: 1;
+  }
+
+  .d-lg-none {
+    display: none;
+  }
+
+  .d-lg-flex {
+    display: flex;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Bookshelves-container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .Bookshelves-container {
+    max-width: 1320px;
+  }
+}
