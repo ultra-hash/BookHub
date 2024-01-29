@@ -1,0 +1,81 @@
+.book-card-item {
+  display: flex;
+  gap: 16px;
+}
+
+.book-card-item > .book-details {
+  flex-grow: 1;
+}
+
+.book-details > * {
+  margin: 0;
+}
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.book-image {
+  width: 133px;
+  height: 155px;
+  border-radius: 8px;
+}
+
+.book-title {
+  color: #334155;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.book-author {
+  color: #475569;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.book-rating {
+  color: #475569;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.book-star-icon {
+  font-size: 14px;
+  color: #fbbf24;
+  align-self: flex-start;
+}
+
+.book-status {
+  color: #475569;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.book-status-value {
+  color: #0284c7;
+}
+
+@media (min-width: 768px) {
+  .book-details {
+    justify-content: flex-start;
+  }
+}
